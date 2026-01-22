@@ -1128,6 +1128,30 @@
         .tab-content.active {
             display: block;
         }
+
+        .copy-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: all 0.2s;
+            margin-left: 0.5rem;
+        }
+
+        .copy-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .copy-btn.copied {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
     </style>
 </head>
 <body>
@@ -1604,47 +1628,47 @@
             <div class="reveal">
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">332 KB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">15 KB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Incarico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Incarico.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Incarico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Incarico.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Incarico.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">121 KB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Cliente.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Cliente.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Cliente.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Cliente.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Cliente.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">20 KB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Team.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Team.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Team.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Team.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Team.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">0.3 KB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Timesheet.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Timesheet.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Timesheet.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Timesheet.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Timesheet.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">6.7 MB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Redditivita_Incarico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Redditivita_Incarico.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Redditivita_Incarico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Redditivita_Incarico.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Redditivita_Incarico.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">174 KB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_CostiDiretti.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_CostiDiretti.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_CostiDiretti.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_CostiDiretti.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_CostiDiretti.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">38 KB</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">370 KB</span>
                 </div>
             </div>
@@ -1654,77 +1678,77 @@
             <div class="reveal">
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Calendario.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Calendario.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Calendario.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Calendario.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Calendario.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Calendario</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Anagrafica persone</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Storico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Storico.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Storico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Storico.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Storico.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Storico contratti</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Giornaliero.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Giornaliero.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Giornaliero.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Giornaliero.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Giornaliero.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Espansione giornaliera contratti</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Storico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Storico.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Storico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Storico.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Storico.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Storico costi</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Giornaliero.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Giornaliero.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Giornaliero.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Giornaliero.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Giornaliero.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Espansione giornaliera costi</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Storico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Storico.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Storico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Storico.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Storico.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Storico team</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Giornaliero.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Giornaliero.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Giornaliero.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Giornaliero.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Giornaliero.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Espansione giornaliera team</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Timesheet.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Timesheet.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Timesheet.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Timesheet.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Timesheet.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Registrazioni ore</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Incarichi</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi_Capitolato.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi_Capitolato.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi_Capitolato.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi_Capitolato.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi_Capitolato.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Voci capitolato incarichi</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CostiDiretti.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CostiDiretti.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CostiDiretti.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CostiDiretti.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CostiDiretti.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Spese vive</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Clienti.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Clienti.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Clienti.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Clienti.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Clienti.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Anagrafica clienti</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Team.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Team.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Team.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Team.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Team.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Team</span>
                 </div>
                 <div class="api-endpoint">
                     <span class="api-method">GET</span>
-                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiIncarico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiIncarico.json</a></span>
+                    <span class="api-path"><a href="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiIncarico.json" target="_blank">https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiIncarico.json</a></span><button class="copy-btn" onclick="copyUrl(this)" data-url="https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiIncarico.json" title="Copia URL"><i class="fas fa-copy"></i></button>
                     <span class="api-desc">Tipologie incarico</span>
                 </div>
                 <div class="api-endpoint">
@@ -2231,6 +2255,19 @@ margini = fact_timesheet.groupby(<span class="string">'PersonaID'</span>).agg({
                 });
             });
         });
+
+        // Copy URL function
+        function copyUrl(btn) {
+            const url = btn.getAttribute('data-url');
+            navigator.clipboard.writeText(url).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '<i class="fas fa-copy"></i>';
+                }, 2000);
+            });
+        }
     </script>
 
 </body>

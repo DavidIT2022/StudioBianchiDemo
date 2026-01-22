@@ -1,0 +1,195 @@
+table Dim_Persona
+	lineageTag: f6a7b8c9-d0e1-2345-f012-678901234567
+
+	column PersonaSK
+		dataType: int64
+		formatString: 0
+		lineageTag: f6a7b8c9-0006-0001-0001-000000000001
+		summarizeBy: none
+		sourceColumn: PersonaSK
+
+		annotation SummarizationSetBy = Automatic
+
+	column PersonaID
+		dataType: int64
+		formatString: 0
+		lineageTag: f6a7b8c9-0006-0001-0002-000000000001
+		summarizeBy: none
+		sourceColumn: PersonaID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nome
+		dataType: string
+		lineageTag: f6a7b8c9-0006-0001-0003-000000000001
+		summarizeBy: none
+		sourceColumn: Nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cognome
+		dataType: string
+		lineageTag: f6a7b8c9-0006-0001-0004-000000000001
+		summarizeBy: none
+		sourceColumn: Cognome
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeCompleto
+		dataType: string
+		lineageTag: f6a7b8c9-0006-0001-0005-000000000001
+		summarizeBy: none
+		sourceColumn: NomeCompleto
+
+		annotation SummarizationSetBy = Automatic
+
+	column Nominativo
+		dataType: string
+		lineageTag: f6a7b8c9-0006-0001-0006-000000000001
+		summarizeBy: none
+		sourceColumn: Nominativo
+
+		annotation SummarizationSetBy = Automatic
+
+	column DataAssunzione
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6a7b8c9-0006-0001-0007-000000000001
+		summarizeBy: none
+		sourceColumn: DataAssunzione
+
+		annotation SummarizationSetBy = Automatic
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DataCessazione
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6a7b8c9-0006-0001-0008-000000000001
+		summarizeBy: none
+		sourceColumn: DataCessazione
+
+		annotation SummarizationSetBy = Automatic
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ValidoDa
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6a7b8c9-0006-0001-0009-000000000001
+		summarizeBy: none
+		sourceColumn: ValidoDa
+
+		annotation SummarizationSetBy = Automatic
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ValidoA
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: f6a7b8c9-0006-0001-0010-000000000001
+		summarizeBy: none
+		sourceColumn: ValidoA
+
+		annotation SummarizationSetBy = Automatic
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ValidoDaKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f6a7b8c9-0006-0001-0011-000000000001
+		summarizeBy: none
+		sourceColumn: ValidoDaKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column ValidoAKey
+		dataType: int64
+		formatString: 0
+		lineageTag: f6a7b8c9-0006-0001-0012-000000000001
+		summarizeBy: none
+		sourceColumn: ValidoAKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column IsCorrente
+		dataType: int64
+		formatString: 0
+		lineageTag: f6a7b8c9-0006-0001-0013-000000000001
+		summarizeBy: none
+		sourceColumn: IsCorrente
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ruolo
+		dataType: string
+		lineageTag: f6a7b8c9-0006-0001-0014-000000000001
+		summarizeBy: none
+		sourceColumn: Ruolo
+
+		annotation SummarizationSetBy = Automatic
+
+	column FTE
+		dataType: double
+		lineageTag: f6a7b8c9-0006-0001-0015-000000000001
+		summarizeBy: none
+		sourceColumn: FTE
+
+		annotation SummarizationSetBy = Automatic
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OreLavorativeGiorno
+		dataType: int64
+		formatString: 0
+		lineageTag: f6a7b8c9-0006-0001-0016-000000000001
+		summarizeBy: none
+		sourceColumn: OreLavorativeGiorno
+
+		annotation SummarizationSetBy = Automatic
+
+	column CostoOrario
+		dataType: double
+		lineageTag: f6a7b8c9-0006-0001-0017-000000000001
+		summarizeBy: none
+		sourceColumn: CostoOrario
+
+		annotation SummarizationSetBy = Automatic
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TariffaOraria
+		dataType: double
+		lineageTag: f6a7b8c9-0006-0001-0018-000000000001
+		summarizeBy: none
+		sourceColumn: TariffaOraria
+
+		annotation SummarizationSetBy = Automatic
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TeamID
+		dataType: int64
+		formatString: 0
+		lineageTag: f6a7b8c9-0006-0001-0019-000000000001
+		summarizeBy: none
+		sourceColumn: TeamID
+
+		annotation SummarizationSetBy = Automatic
+
+	column NomeTeam
+		dataType: string
+		lineageTag: f6a7b8c9-0006-0001-0020-000000000001
+		summarizeBy: none
+		sourceColumn: NomeTeam
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Persona = m
+		mode: import
+		source =
+				let
+				    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, "/Date(") then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, "/Date(", ")")) / 1000) else value,
+				    Source = Json.Document(Web.Contents("https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json")),
+				    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    Expanded = Table.ExpandRecordColumn(ToTable, "Column1", Record.FieldNames(ToTable{0}[Column1])),
+				    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)
+				in
+				    Converted
+
+	annotation PBI_ResultType = Table
+

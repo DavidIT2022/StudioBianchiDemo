@@ -1,0 +1,37 @@
+model Model
+	culture: it-IT
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: it-IT
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_QueryOrder = ["Calendario","Persone","Persone_Contratto_Storico","Persone_Contratto_Giornaliero","Persone_Costo_Storico","Persone_Costo_Giornaliero","Persone_Team_Storico","Persone_Team_Giornaliero","Timesheet","Incarichi","Incarichi_Capitolato","CostiDiretti","Clienti","Team","TipiIncarico","VociCapitolato","TipiCostoDiretto","CentriDiCosto","CentriCosto_Costi","Ruoli"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Calendario
+ref table Persone
+ref table Persone_Contratto_Storico
+ref table Persone_Contratto_Giornaliero
+ref table Persone_Costo_Storico
+ref table Persone_Costo_Giornaliero
+ref table Persone_Team_Storico
+ref table Persone_Team_Giornaliero
+ref table Timesheet
+ref table Incarichi
+ref table Incarichi_Capitolato
+ref table CostiDiretti
+ref table Clienti
+ref table Team
+ref table TipiIncarico
+ref table VociCapitolato
+ref table TipiCostoDiretto
+ref table CentriDiCosto
+ref table CentriCosto_Costi
+ref table Ruoli
+
+ref cultureInfo it-IT
+

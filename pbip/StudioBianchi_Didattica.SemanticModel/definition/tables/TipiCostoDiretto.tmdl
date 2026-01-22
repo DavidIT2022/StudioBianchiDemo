@@ -1,0 +1,16 @@
+table TipiCostoDiretto
+	lineageTag: dbd67ed8-b3d7-45ac-b237-a17f9d479723
+
+	partition TipiCostoDiretto = m
+		mode: import
+		source =
+				let
+				    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, "/Date(") then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, "/Date(", ")")) / 1000) else value,
+				    Source = Json.Document(Web.Contents("https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiCostoDiretto.json")),
+				    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    Expanded = Table.ExpandRecordColumn(ToTable, "Column1", Record.FieldNames(ToTable{0}[Column1])),
+				    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)
+				in
+				    Converted
+
+	annotation PBI_ResultType = Table

@@ -1,0 +1,69 @@
+relationship Fact_Timesheet_Dim_Data
+	fromColumn: Fact_Timesheet.DataKey
+	toColumn: Dim_Data.DataKey
+
+relationship Fact_Timesheet_Dim_Persona
+	fromColumn: Fact_Timesheet.PersonaSK
+	toColumn: Dim_Persona.PersonaSK
+
+relationship Fact_Timesheet_Dim_Incarico
+	fromColumn: Fact_Timesheet.IncaricoID
+	toColumn: Dim_Incarico.IncaricoID
+
+relationship Fact_Timesheet_Dim_Team_Prestatore
+	fromColumn: Fact_Timesheet.TeamPrestatoreID
+	toColumn: Dim_Team.TeamID
+
+relationship Fact_Timesheet_Dim_Team_Titolare
+	isActive: false
+	fromColumn: Fact_Timesheet.TeamTitolareID
+	toColumn: Dim_Team.TeamID
+
+relationship Fact_CostiDiretti_Dim_Data
+	fromColumn: Fact_CostiDiretti.DataKey
+	toColumn: Dim_Data.DataKey
+
+relationship Fact_CostiDiretti_Dim_Incarico
+	fromColumn: Fact_CostiDiretti.IncaricoID
+	toColumn: Dim_Incarico.IncaricoID
+
+relationship Fact_CostiDiretti_Dim_Cliente
+	fromColumn: Fact_CostiDiretti.ClienteID
+	toColumn: Dim_Cliente.ClienteID
+
+relationship Fact_CostiDiretti_Dim_TipoCosto
+	fromColumn: Fact_CostiDiretti.TipoCostoID
+	toColumn: Dim_TipoCosto.TipoCostoID
+
+relationship Fact_CostiDiretti_Dim_Team
+	fromColumn: Fact_CostiDiretti.TeamTitolareID
+	toColumn: Dim_Team.TeamID
+
+relationship Fact_Redditivita_Dim_Incarico
+	fromColumn: Fact_Redditivita_Incarico.IncaricoID
+	toColumn: Dim_Incarico.IncaricoID
+
+relationship Fact_Redditivita_Dim_Cliente
+	fromColumn: Fact_Redditivita_Incarico.ClienteID
+	toColumn: Dim_Cliente.ClienteID
+
+relationship Fact_Redditivita_Dim_Team
+	fromColumn: Fact_Redditivita_Incarico.TeamTitolareID
+	toColumn: Dim_Team.TeamID
+
+relationship Fact_AvanzamentoCapitolato_Dim_VoceCapitolato
+	fromColumn: Fact_AvanzamentoCapitolato.VoceID
+	toColumn: Dim_VoceCapitolato.VoceID
+
+relationship Fact_AvanzamentoCapitolato_Dim_Incarico
+	fromColumn: Fact_AvanzamentoCapitolato.IncaricoID
+	toColumn: Dim_Incarico.IncaricoID
+
+relationship Dim_Incarico_Dim_Cliente
+	fromColumn: Dim_Incarico.ClienteID
+	toColumn: Dim_Cliente.ClienteID
+
+relationship Dim_Incarico_Dim_Team
+	fromColumn: Dim_Incarico.TeamTitolareID
+	toColumn: Dim_Team.TeamID
+
