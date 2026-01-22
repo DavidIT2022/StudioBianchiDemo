@@ -1,0 +1,10 @@
+# Script di esportazione (non necessari nel repo)
+*.ps1
+*.sql
+
+# File temporanei
+*.tmp
+*.log
+
+# Claude
+.claude/

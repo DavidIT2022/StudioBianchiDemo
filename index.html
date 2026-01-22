@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Bianchi - Dataset Didattico | Star Schema Kimball</title>
+    <meta name="description" content="Dataset didattico per corsi di Business Intelligence. Modello Star Schema Kimball per uno studio professionale.">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #0891b2;
+            --success: #059669;
+            --warning: #d97706;
+            --danger: #dc2626;
+            --bg-light: #ffffff;
+            --bg-subtle: #f8fafc;
+            --surface: #ffffff;
+            --surface-alt: #f1f5f9;
+            --text: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            padding: 0.75rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i { color: var(--primary); }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 6rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 .accent { color: #38bdf8; }
+
+        .hero p {
+            font-size: clamp(1.1rem, 3vw, 1.35rem);
+            color: #cbd5e1;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #38bdf8;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .section-alt { background: var(--bg-subtle); }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-number {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .section h2 {
+            font-size: clamp(1.75rem, 5vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section h2 .accent {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .card-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: var(--surface-alt);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-top: 1rem;
+        }
+
+        .card-badge.dim { background: #dbeafe; color: #1d4ed8; }
+        .card-badge.fact { background: #d1fae5; color: #059669; }
+
+        /* Schema Diagram */
+        .schema-container {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+
+        .schema-diagram {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            line-height: 1.4;
+            white-space: pre;
+            color: var(--text);
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: var(--surface-alt);
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        tr:hover { background: var(--bg-subtle); }
+
+        .badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-blue { background: #dbeafe; color: #1d4ed8; }
+        .badge-green { background: #d1fae5; color: #059669; }
+        .badge-orange { background: #fef3c7; color: #d97706; }
+
+        /* Code Block */
+        .code-block {
+            background: #1e293b;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .code-block code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            line-height: 1.6;
+        }
+
+        .code-block .comment { color: #64748b; }
+        .code-block .keyword { color: #38bdf8; }
+        .code-block .string { color: #4ade80; }
+
+        /* API Section */
+        .api-endpoint {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .api-endpoint:hover {
+            border-color: var(--primary);
+            background: var(--bg-subtle);
+        }
+
+        .api-method {
+            padding: 0.25rem 0.5rem;
+            background: #d1fae5;
+            color: #059669;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .api-path {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text);
+            flex: 1;
+        }
+
+        .api-path a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .api-path a:hover { text-decoration: underline; }
+
+        .api-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        /* Footer */
+        .footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer p { font-size: 0.875rem; }
+        .footer a { color: #38bdf8; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-stats { gap: 1.5rem; }
+            .stat-value { font-size: 2rem; }
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">
+            <i class="fas fa-database"></i>
+            Studio Bianchi Dataset
+        </div>
+        <nav class="nav-links">
+            <a href="#caso">Il Caso</a>
+            <a href="#modello">Modello Kimball</a>
+            <a href="#viste">Viste</a>
+            <a href="#api">API JSON</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Studio <span class="accent">Bianchi</span></h1>
+            <p>Dataset didattico per corsi di Business Intelligence.<br>Modello Star Schema secondo la metodologia Kimball.</p>
+
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-value">31</div>
+                    <div class="stat-label">Viste SQL</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">7</div>
+                    <div class="stat-label">Dimensioni</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Fact Tables</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">16K+</div>
+                    <div class="stat-label">Righe Timesheet</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Il Caso -->
+    <section id="caso" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Capitolo 01</div>
+                <h2>Il Caso <span class="accent">Studio Bianchi</span></h2>
+                <p class="section-lead">Uno studio professionale che offre servizi di consulenza contabile, fiscale e revisione a PMI e grandi aziende.</p>
+            </div>
+
+            <div class="cards-grid">
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-users"></i></div>
+                    <h3>12 Professionisti</h3>
+                    <p>Team organizzato in 3 aree: Bilanci e Contabilità, Fiscale, Revisione. Ogni persona ha storico di ruolo, costo e team.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>250 Incarichi</h3>
+                    <p>Incarichi con 180 clienti diversi. Ogni incarico ha un importo pattuito, un capitolato e ore lavorate.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-clock"></i></div>
+                    <h3>16.248 Ore Registrate</h3>
+                    <p>Due anni di timesheet (2024-2025) con dettaglio giornaliero delle ore per persona e incarico.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>Analisi Marginalità</h3>
+                    <p>Confronto tra ricavo reale (pattuito) e ricavo teorico (ore × tariffa). Calcolo margine effettivo vs desiderato.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modello Kimball -->
+    <section id="modello" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Capitolo 02</div>
+                <h2>Modello <span class="accent">Star Schema</span></h2>
+                <p class="section-lead">Architettura dimensionale secondo la metodologia Kimball con SCD Type 2 per la storicizzazione.</p>
+            </div>
+
+            <div class="schema-container reveal">
+                <div class="schema-diagram">                         ┌─────────────────┐
+                         │   Dim_Data      │
+                         │   (DataKey)     │
+                         └────────┬────────┘
+                                  │
+     ┌────────────────────────────┼────────────────────────┐
+     │                            │                        │
+     ▼                            ▼                        ▼
+┌──────────────┐          ┌─────────────────┐      ┌────────────────┐
+│Fact_Timesheet│          │Fact_Redditivita │      │Fact_CostiDir.  │
+│  (dettaglio) │          │   _Incarico     │      │  (spese vive)  │
+│              │          │   (snapshot)    │      │                │
+│- OreLavorate │          │                 │      │- Importo       │
+│- CostoEffect.│          │- RicavoReale    │      │                │
+│- RicavoTeor. │          │- RicavoTeorico  │      └───────┬────────┘
+│- MargineTeor.│          │- MargineReale   │              │
+└──────┬───────┘          │- MargineDeside. │              │
+       │                  └────────┬────────┘              │
+       │                           │                       │
+       ├────────►Dim_Persona◄──────┤                       │
+       │           (SCD2)          │                       │
+       │                           │                       │
+       └─────────►Dim_Incarico◄────┴───────────────────────┘</div>
+            </div>
+
+            <div class="cards-grid" style="margin-top: 3rem;">
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-key"></i></div>
+                    <h3>Surrogate Keys</h3>
+                    <p><strong>DataKey</strong> (YYYYMMDD) e <strong>PersonaSK</strong> per join ottimizzati e gestione SCD.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-history"></i></div>
+                    <h3>SCD Type 2</h3>
+                    <p><strong>Dim_Persona</strong> storicizza ruolo, costo orario, tariffa e team con ValidoDa/ValidoA.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-theater-masks"></i></div>
+                    <h3>Role-Playing</h3>
+                    <p><strong>Dim_Team</strong> usata sia come TeamPrestatore che TeamTitolare nella Fact_Timesheet.</p>
+                </div>
+                <div class="card reveal">
+                    <div class="card-icon"><i class="fas fa-compress-alt"></i></div>
+                    <h3>Denormalizzazione</h3>
+                    <p><strong>Dim_Incarico</strong> include Cliente e TipoIncarico embedded per ridurre join.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Viste -->
+    <section id="viste" class="section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Capitolo 03</div>
+                <h2>Le <span class="accent">Viste SQL</span></h2>
+                <p class="section-lead">Due set di viste: ViewDidattica_ (replica M di Power Query) e ViewStarSchema_ (modello Kimball).</p>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;"><i class="fas fa-star" style="color: var(--warning);"></i> Star Schema (11 viste)</h3>
+
+            <div class="table-container reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vista</th>
+                            <th>Tipo</th>
+                            <th>Righe</th>
+                            <th>Descrizione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>Dim_Data</code></td>
+                            <td><span class="badge badge-blue">DIM</span></td>
+                            <td>731</td>
+                            <td>Calendario 2024-2025 con attributi temporali italiani</td>
+                        </tr>
+                        <tr>
+                            <td><code>Dim_Persona</code></td>
+                            <td><span class="badge badge-blue">DIM</span> <span class="badge badge-orange">SCD2</span></td>
+                            <td>32</td>
+                            <td>Persone storicizzate con ruolo, costo, tariffa, team</td>
+                        </tr>
+                        <tr>
+                            <td><code>Dim_Team</code></td>
+                            <td><span class="badge badge-blue">DIM</span></td>
+                            <td>3</td>
+                            <td>Team dello studio</td>
+                        </tr>
+                        <tr>
+                            <td><code>Dim_Cliente</code></td>
+                            <td><span class="badge badge-blue">DIM</span></td>
+                            <td>180</td>
+                            <td>Anagrafica clienti con settore</td>
+                        </tr>
+                        <tr>
+                            <td><code>Dim_Incarico</code></td>
+                            <td><span class="badge badge-blue">DIM</span></td>
+                            <td>250</td>
+                            <td>Incarichi denormalizzati con Cliente e TipoIncarico</td>
+                        </tr>
+                        <tr>
+                            <td><code>Dim_TipoCosto</code></td>
+                            <td><span class="badge badge-blue">DIM</span></td>
+                            <td>10</td>
+                            <td>Tipologie costo diretto</td>
+                        </tr>
+                        <tr>
+                            <td><code>Dim_VoceCapitolato</code></td>
+                            <td><span class="badge badge-blue">DIM</span></td>
+                            <td>64</td>
+                            <td>Voci capitolato con TipoIncarico</td>
+                        </tr>
+                        <tr>
+                            <td><code>Fact_Timesheet</code></td>
+                            <td><span class="badge badge-green">FACT</span></td>
+                            <td>16.248</td>
+                            <td>Ore, CostoEffettivo, RicavoTeorico, MargineTeoricoRivendita</td>
+                        </tr>
+                        <tr>
+                            <td><code>Fact_CostiDiretti</code></td>
+                            <td><span class="badge badge-green">FACT</span></td>
+                            <td>244</td>
+                            <td>Spese vive per incarico</td>
+                        </tr>
+                        <tr>
+                            <td><code>Fact_Redditivita_Incarico</code></td>
+                            <td><span class="badge badge-green">FACT</span></td>
+                            <td>250</td>
+                            <td>RicavoReale vs RicavoTeorico, MargineReale vs MargineDesiderato</td>
+                        </tr>
+                        <tr>
+                            <td><code>Fact_AvanzamentoCapitolato</code></td>
+                            <td><span class="badge badge-green">FACT</span></td>
+                            <td>1.364</td>
+                            <td>Stato avanzamento voci capitolato</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 style="margin-top: 3rem; margin-bottom: 1rem;"><i class="fas fa-graduation-cap" style="color: var(--primary);"></i> Didattiche (20 viste)</h3>
+
+            <div class="table-container reveal">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Vista</th>
+                            <th>Righe</th>
+                            <th>Descrizione</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><code>Calendario</code></td><td>6.209</td><td>Espansione date con attributi</td></tr>
+                        <tr><td><code>Persone</code></td><td>12</td><td>Anagrafica con Nominativo</td></tr>
+                        <tr><td><code>Persone_Contratto_Storico</code></td><td>23</td><td>Storico ruolo/FTE/ore</td></tr>
+                        <tr><td><code>Persone_Contratto_Giornaliero</code></td><td>36.995</td><td>Espansione giornaliera contratto</td></tr>
+                        <tr><td><code>Persone_Costo_Storico</code></td><td>24</td><td>Storico costo/tariffa</td></tr>
+                        <tr><td><code>Persone_Costo_Giornaliero</code></td><td>24.772</td><td>Espansione giornaliera costi</td></tr>
+                        <tr><td><code>Persone_Team_Storico</code></td><td>16</td><td>Storico appartenenza team</td></tr>
+                        <tr><td><code>Persone_Team_Giornaliero</code></td><td>36.995</td><td>Espansione giornaliera team</td></tr>
+                        <tr><td><code>Timesheet</code></td><td>16.248</td><td>Registrazioni ore con merge dati persona</td></tr>
+                        <tr><td><code>Incarichi</code></td><td>250</td><td>Incarichi con date corrette</td></tr>
+                        <tr><td><code>Incarichi_Capitolato</code></td><td>1.364</td><td>Voci capitolato per incarico</td></tr>
+                        <tr><td><code>CostiDiretti</code></td><td>244</td><td>Spese vive</td></tr>
+                        <tr><td><code>Clienti</code></td><td>180</td><td>Anagrafica clienti</td></tr>
+                        <tr><td><code>Team</code></td><td>3</td><td>Struttura team</td></tr>
+                        <tr><td><code>TipiIncarico</code></td><td>12</td><td>Tipologie incarico</td></tr>
+                        <tr><td><code>VociCapitolato</code></td><td>64</td><td>Template voci capitolato</td></tr>
+                        <tr><td><code>TipiCostoDiretto</code></td><td>10</td><td>Categorie costi</td></tr>
+                        <tr><td><code>CentriDiCosto</code></td><td>5</td><td>Centri di costo</td></tr>
+                        <tr><td><code>CentriCosto_Costi</code></td><td>120</td><td>Allocazione costi</td></tr>
+                        <tr><td><code>Ruoli</code></td><td>4</td><td>Lista ruoli distinti</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- API JSON -->
+    <section id="api" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-number">Capitolo 04</div>
+                <h2>API <span class="accent">JSON</span></h2>
+                <p class="section-lead">Tutti i dati sono disponibili come file JSON statici. Connettiti da Power BI con il connettore Web.</p>
+            </div>
+
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;"><i class="fas fa-star" style="color: var(--warning);"></i> Star Schema</h3>
+
+            <div class="reveal">
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Dim_Data.json" target="_blank">data/starschema/Dim_Data.json</a></span>
+                    <span class="api-desc">Dimensione Data</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Dim_Persona.json" target="_blank">data/starschema/Dim_Persona.json</a></span>
+                    <span class="api-desc">Dimensione Persona (SCD2)</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Dim_Incarico.json" target="_blank">data/starschema/Dim_Incarico.json</a></span>
+                    <span class="api-desc">Dimensione Incarico</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Dim_Cliente.json" target="_blank">data/starschema/Dim_Cliente.json</a></span>
+                    <span class="api-desc">Dimensione Cliente</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Dim_Team.json" target="_blank">data/starschema/Dim_Team.json</a></span>
+                    <span class="api-desc">Dimensione Team</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Fact_Timesheet.json" target="_blank">data/starschema/Fact_Timesheet.json</a></span>
+                    <span class="api-desc">Fact Timesheet (6.7 MB)</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Fact_Redditivita_Incarico.json" target="_blank">data/starschema/Fact_Redditivita_Incarico.json</a></span>
+                    <span class="api-desc">Fact Redditività Incarico</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Fact_CostiDiretti.json" target="_blank">data/starschema/Fact_CostiDiretti.json</a></span>
+                    <span class="api-desc">Fact Costi Diretti</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/starschema/Fact_AvanzamentoCapitolato.json" target="_blank">data/starschema/Fact_AvanzamentoCapitolato.json</a></span>
+                    <span class="api-desc">Fact Avanzamento Capitolato</span>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 2.5rem; margin-bottom: 1rem;"><i class="fas fa-graduation-cap" style="color: var(--primary);"></i> Didattiche</h3>
+
+            <div class="reveal">
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/didattica/Timesheet.json" target="_blank">data/didattica/Timesheet.json</a></span>
+                    <span class="api-desc">Timesheet (4.7 MB)</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/didattica/Persone_Contratto_Giornaliero.json" target="_blank">data/didattica/Persone_Contratto_Giornaliero.json</a></span>
+                    <span class="api-desc">Espansione Giornaliera Contratti (4.4 MB)</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/didattica/Calendario.json" target="_blank">data/didattica/Calendario.json</a></span>
+                    <span class="api-desc">Calendario (2.2 MB)</span>
+                </div>
+                <div class="api-endpoint">
+                    <span class="api-method">GET</span>
+                    <span class="api-path"><a href="data/didattica/" target="_blank">data/didattica/</a></span>
+                    <span class="api-desc">Tutte le viste didattiche...</span>
+                </div>
+            </div>
+
+            <div class="code-block reveal" style="margin-top: 2rem;">
+                <code><span class="comment">// Esempio connessione da Power BI (Power Query M)</span>
+let
+    Source = Json.Document(Web.Contents(
+        <span class="string">"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Timesheet.json"</span>
+    )),
+    Table = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+    Expanded = Table.ExpandRecordColumn(Table, <span class="string">"Column1"</span>, Record.FieldNames(Table{0}[Column1]))
+<span class="keyword">in</span>
+    Expanded</code>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><i class="fas fa-database"></i> Studio Bianchi Dataset - Materiale didattico per corsi di Business Intelligence</p>
+            <p style="margin-top: 0.5rem;">Repository: <a href="https://github.com/DavidIT2022/StudioBianchiDemo" target="_blank">github.com/DavidIT2022/StudioBianchiDemo</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Reveal on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
