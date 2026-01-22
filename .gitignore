@@ -5,6 +5,4 @@
 # File temporanei
 *.tmp
 *.log
-
-# Claude
-.claude/
+.*/
