@@ -14,7 +14,7 @@
         "name": "Dim_Data",
         "columns": [
           {"name": "DataKey", "dataType": "int64", "sourceColumn": "DataKey"},
-          {"name": "Data", "dataType": "dateTime", "sourceColumn": "Data"},
+          {"name": "Data", "dataType": "date", "sourceColumn": "Data"},
           {"name": "Anno", "dataType": "int64", "sourceColumn": "Anno"},
           {"name": "Mese", "dataType": "int64", "sourceColumn": "Mese"},
           {"name": "Giorno", "dataType": "int64", "sourceColumn": "Giorno"},
@@ -32,7 +32,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": "let\n    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, \"/Date(\") then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, \"/Date(\", \")\")) / 1000) else value,\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1])),\n    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)\nin\n    Converted"
+              "expression": "let\n    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, \"/Date(\") then Date.From(#datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, \"/Date(\", \")\")) / 1000)) else value,\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1])),\n    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)\nin\n    Converted"
             }
           }
         ]
@@ -46,10 +46,10 @@
           {"name": "Cognome", "dataType": "string", "sourceColumn": "Cognome"},
           {"name": "NomeCompleto", "dataType": "string", "sourceColumn": "NomeCompleto"},
           {"name": "Nominativo", "dataType": "string", "sourceColumn": "Nominativo"},
-          {"name": "DataAssunzione", "dataType": "dateTime", "sourceColumn": "DataAssunzione"},
-          {"name": "DataCessazione", "dataType": "dateTime", "sourceColumn": "DataCessazione"},
-          {"name": "ValidoDa", "dataType": "dateTime", "sourceColumn": "ValidoDa"},
-          {"name": "ValidoA", "dataType": "dateTime", "sourceColumn": "ValidoA"},
+          {"name": "DataAssunzione", "dataType": "date", "sourceColumn": "DataAssunzione"},
+          {"name": "DataCessazione", "dataType": "date", "sourceColumn": "DataCessazione"},
+          {"name": "ValidoDa", "dataType": "date", "sourceColumn": "ValidoDa"},
+          {"name": "ValidoA", "dataType": "date", "sourceColumn": "ValidoA"},
           {"name": "ValidoDaKey", "dataType": "int64", "sourceColumn": "ValidoDaKey"},
           {"name": "ValidoAKey", "dataType": "int64", "sourceColumn": "ValidoAKey"},
           {"name": "IsCorrente", "dataType": "int64", "sourceColumn": "IsCorrente"},
@@ -67,7 +67,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": "let\n    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, \"/Date(\") then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, \"/Date(\", \")\")) / 1000) else value,\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1])),\n    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)\nin\n    Converted"
+              "expression": "let\n    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, \"/Date(\") then Date.From(#datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, \"/Date(\", \")\")) / 1000)) else value,\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1])),\n    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)\nin\n    Converted"
             }
           }
         ]
@@ -268,7 +268,7 @@
           {"name": "Peso", "dataType": "int64", "sourceColumn": "Peso"},
           {"name": "Eseguito", "dataType": "int64", "sourceColumn": "Eseguito"},
           {"name": "DataEsecuzioneKey", "dataType": "int64", "sourceColumn": "DataEsecuzioneKey"},
-          {"name": "DataEsecuzione", "dataType": "dateTime", "sourceColumn": "DataEsecuzione"},
+          {"name": "DataEsecuzione", "dataType": "date", "sourceColumn": "DataEsecuzione"},
           {"name": "PesoCompletato", "dataType": "int64", "sourceColumn": "PesoCompletato"},
           {"name": "PesoResiduo", "dataType": "int64", "sourceColumn": "PesoResiduo"}
         ],
@@ -278,7 +278,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": "let\n    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, \"/Date(\") then #datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, \"/Date(\", \")\")) / 1000) else value,\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1])),\n    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)\nin\n    Converted"
+              "expression": "let\n    ConvertJsonDate = (value) => if value is text and Text.StartsWith(value, \"/Date(\") then Date.From(#datetime(1970, 1, 1, 0, 0, 0) + #duration(0, 0, 0, Number.From(Text.BetweenDelimiters(value, \"/Date(\", \")\")) / 1000)) else value,\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1])),\n    Converted = Table.TransformColumns(Expanded, {}, ConvertJsonDate)\nin\n    Converted"
             }
           }
         ]
