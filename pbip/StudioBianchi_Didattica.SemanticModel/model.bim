@@ -17,14 +17,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Calendario.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Calendario.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -37,14 +30,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -57,14 +43,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Storico.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Storico.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -77,14 +56,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Giornaliero.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Contratto_Giornaliero.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -97,14 +69,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Storico.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Storico.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -117,14 +82,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Giornaliero.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Costo_Giornaliero.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -137,14 +95,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Storico.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Storico.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -157,14 +108,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Giornaliero.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Persone_Team_Giornaliero.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -177,14 +121,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Timesheet.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Timesheet.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -197,14 +134,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -217,14 +147,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi_Capitolato.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Incarichi_Capitolato.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -237,14 +160,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CostiDiretti.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CostiDiretti.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -257,14 +173,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Clienti.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Clienti.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -277,14 +186,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Team.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Team.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -297,14 +199,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiIncarico.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiIncarico.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -317,14 +212,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/VociCapitolato.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/VociCapitolato.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -337,14 +225,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiCostoDiretto.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/TipiCostoDiretto.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -357,14 +238,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CentriDiCosto.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CentriDiCosto.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -377,14 +251,7 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CentriCosto_Costi.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/CentriCosto_Costi.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
@@ -397,124 +264,10 @@
             "mode": "import",
             "source": {
               "type": "m",
-              "expression": [
-                "let",
-                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Ruoli.json\")),",
-                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
-                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
-                "in",
-                "    Expanded"
-              ]
+              "expression": "let\n    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/didattica/Ruoli.json\")),\n    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),\n    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))\nin\n    Expanded"
             }
           }
         ]
-      }
-    ],
-    "relationships": [
-      {
-        "name": "Timesheet_Persone",
-        "fromTable": "Timesheet",
-        "fromColumn": "PersonaID",
-        "toTable": "Persone",
-        "toColumn": "PersonaID"
-      },
-      {
-        "name": "Timesheet_Incarichi",
-        "fromTable": "Timesheet",
-        "fromColumn": "IncaricoID",
-        "toTable": "Incarichi",
-        "toColumn": "IncaricoID"
-      },
-      {
-        "name": "Incarichi_Clienti",
-        "fromTable": "Incarichi",
-        "fromColumn": "ClienteID",
-        "toTable": "Clienti",
-        "toColumn": "ClienteID"
-      },
-      {
-        "name": "Incarichi_TipiIncarico",
-        "fromTable": "Incarichi",
-        "fromColumn": "TipoIncaricoID",
-        "toTable": "TipiIncarico",
-        "toColumn": "TipoIncaricoID"
-      },
-      {
-        "name": "Incarichi_Team",
-        "fromTable": "Incarichi",
-        "fromColumn": "TeamID",
-        "toTable": "Team",
-        "toColumn": "TeamID"
-      },
-      {
-        "name": "CostiDiretti_Incarichi",
-        "fromTable": "CostiDiretti",
-        "fromColumn": "IncaricoID",
-        "toTable": "Incarichi",
-        "toColumn": "IncaricoID"
-      },
-      {
-        "name": "CostiDiretti_TipiCostoDiretto",
-        "fromTable": "CostiDiretti",
-        "fromColumn": "TipoCostoID",
-        "toTable": "TipiCostoDiretto",
-        "toColumn": "TipoCostoID"
-      },
-      {
-        "name": "Incarichi_Capitolato_Incarichi",
-        "fromTable": "Incarichi_Capitolato",
-        "fromColumn": "IncaricoID",
-        "toTable": "Incarichi",
-        "toColumn": "IncaricoID"
-      },
-      {
-        "name": "Incarichi_Capitolato_VociCapitolato",
-        "fromTable": "Incarichi_Capitolato",
-        "fromColumn": "VoceID",
-        "toTable": "VociCapitolato",
-        "toColumn": "VoceID"
-      },
-      {
-        "name": "VociCapitolato_TipiIncarico",
-        "fromTable": "VociCapitolato",
-        "fromColumn": "TipoIncaricoID",
-        "toTable": "TipiIncarico",
-        "toColumn": "TipoIncaricoID"
-      },
-      {
-        "name": "Persone_Contratto_Storico_Persone",
-        "fromTable": "Persone_Contratto_Storico",
-        "fromColumn": "PersonaID",
-        "toTable": "Persone",
-        "toColumn": "PersonaID"
-      },
-      {
-        "name": "Persone_Costo_Storico_Persone",
-        "fromTable": "Persone_Costo_Storico",
-        "fromColumn": "PersonaID",
-        "toTable": "Persone",
-        "toColumn": "PersonaID"
-      },
-      {
-        "name": "Persone_Team_Storico_Persone",
-        "fromTable": "Persone_Team_Storico",
-        "fromColumn": "PersonaID",
-        "toTable": "Persone",
-        "toColumn": "PersonaID"
-      },
-      {
-        "name": "Persone_Team_Storico_Team",
-        "fromTable": "Persone_Team_Storico",
-        "fromColumn": "TeamID",
-        "toTable": "Team",
-        "toColumn": "TeamID"
-      },
-      {
-        "name": "CentriCosto_Costi_CentriDiCosto",
-        "fromTable": "CentriCosto_Costi",
-        "fromColumn": "CentroCostoID",
-        "toTable": "CentriDiCosto",
-        "toColumn": "CentroCostoID"
       }
     ],
     "annotations": [
