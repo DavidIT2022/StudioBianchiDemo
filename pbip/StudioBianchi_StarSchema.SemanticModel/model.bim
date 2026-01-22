@@ -1,0 +1,438 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "it-IT",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "it-IT",
+    "tables": [
+      {
+        "name": "Dim_Data",
+        "columns": [
+          { "name": "DataKey", "dataType": "int64", "sourceColumn": "DataKey" },
+          { "name": "Data", "dataType": "dateTime", "sourceColumn": "Data" },
+          { "name": "Anno", "dataType": "int64", "sourceColumn": "Anno" },
+          { "name": "Trimestre", "dataType": "int64", "sourceColumn": "Trimestre" },
+          { "name": "Mese", "dataType": "int64", "sourceColumn": "Mese" },
+          { "name": "MeseNome", "dataType": "string", "sourceColumn": "MeseNome" },
+          { "name": "Settimana", "dataType": "int64", "sourceColumn": "Settimana" },
+          { "name": "GiornoSettimana", "dataType": "int64", "sourceColumn": "GiornoSettimana" },
+          { "name": "GiornoSettimanaNome", "dataType": "string", "sourceColumn": "GiornoSettimanaNome" },
+          { "name": "IsWeekend", "dataType": "int64", "sourceColumn": "IsWeekend" }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Data",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Data.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Persona",
+        "columns": [
+          { "name": "PersonaSK", "dataType": "int64", "sourceColumn": "PersonaSK" },
+          { "name": "PersonaID", "dataType": "int64", "sourceColumn": "PersonaID" },
+          { "name": "Nome", "dataType": "string", "sourceColumn": "Nome" },
+          { "name": "Cognome", "dataType": "string", "sourceColumn": "Cognome" },
+          { "name": "Nominativo", "dataType": "string", "sourceColumn": "Nominativo" },
+          { "name": "ValidoDa", "dataType": "dateTime", "sourceColumn": "ValidoDa" },
+          { "name": "ValidoA", "dataType": "dateTime", "sourceColumn": "ValidoA" },
+          { "name": "IsCorrente", "dataType": "int64", "sourceColumn": "IsCorrente" },
+          { "name": "Ruolo", "dataType": "string", "sourceColumn": "Ruolo" },
+          { "name": "CostoOrario", "dataType": "double", "sourceColumn": "CostoOrario" },
+          { "name": "TariffaOraria", "dataType": "double", "sourceColumn": "TariffaOraria" },
+          { "name": "TeamID", "dataType": "int64", "sourceColumn": "TeamID" },
+          { "name": "NomeTeam", "dataType": "string", "sourceColumn": "NomeTeam" }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Persona",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Persona.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Team",
+        "columns": [
+          { "name": "TeamID", "dataType": "int64", "sourceColumn": "TeamID" },
+          { "name": "NomeTeam", "dataType": "string", "sourceColumn": "NomeTeam" }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Team",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Team.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Cliente",
+        "columns": [
+          { "name": "ClienteID", "dataType": "int64", "sourceColumn": "ClienteID" },
+          { "name": "RagioneSociale", "dataType": "string", "sourceColumn": "RagioneSociale" },
+          { "name": "PartitaIVA", "dataType": "string", "sourceColumn": "PartitaIVA" },
+          { "name": "Settore", "dataType": "string", "sourceColumn": "Settore" }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Cliente",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Cliente.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_Incarico",
+        "columns": [
+          { "name": "IncaricoID", "dataType": "int64", "sourceColumn": "IncaricoID" },
+          { "name": "ClienteID", "dataType": "int64", "sourceColumn": "ClienteID" },
+          { "name": "ClienteRagioneSociale", "dataType": "string", "sourceColumn": "ClienteRagioneSociale" },
+          { "name": "ClienteSettore", "dataType": "string", "sourceColumn": "ClienteSettore" },
+          { "name": "TipoIncaricoID", "dataType": "int64", "sourceColumn": "TipoIncaricoID" },
+          { "name": "TipoIncaricoDescrizione", "dataType": "string", "sourceColumn": "TipoIncaricoDescrizione" },
+          { "name": "TeamTitolareID", "dataType": "int64", "sourceColumn": "TeamTitolareID" },
+          { "name": "TeamTitolareNome", "dataType": "string", "sourceColumn": "TeamTitolareNome" },
+          { "name": "DataApertura", "dataType": "dateTime", "sourceColumn": "DataApertura" },
+          { "name": "DataChiusura", "dataType": "dateTime", "sourceColumn": "DataChiusura" },
+          { "name": "ImportoPattuito", "dataType": "double", "sourceColumn": "ImportoPattuito" },
+          { "name": "StatoIncarico", "dataType": "string", "sourceColumn": "StatoIncarico" }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_Incarico",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_Incarico.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_TipoCosto",
+        "columns": [
+          { "name": "TipoCostoID", "dataType": "int64", "sourceColumn": "TipoCostoID" },
+          { "name": "Descrizione", "dataType": "string", "sourceColumn": "Descrizione" }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_TipoCosto",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_TipoCosto.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Dim_VoceCapitolato",
+        "columns": [
+          { "name": "VoceID", "dataType": "int64", "sourceColumn": "VoceID" },
+          { "name": "TipoIncaricoID", "dataType": "int64", "sourceColumn": "TipoIncaricoID" },
+          { "name": "DescrizioneVoce", "dataType": "string", "sourceColumn": "DescrizioneVoce" },
+          { "name": "OrdineEsecuzione", "dataType": "int64", "sourceColumn": "OrdineEsecuzione" }
+        ],
+        "partitions": [
+          {
+            "name": "Dim_VoceCapitolato",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Dim_VoceCapitolato.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_Timesheet",
+        "columns": [
+          { "name": "TimesheetID", "dataType": "int64", "sourceColumn": "TimesheetID" },
+          { "name": "DataKey", "dataType": "int64", "sourceColumn": "DataKey" },
+          { "name": "PersonaSK", "dataType": "int64", "sourceColumn": "PersonaSK" },
+          { "name": "PersonaID", "dataType": "int64", "sourceColumn": "PersonaID" },
+          { "name": "IncaricoID", "dataType": "int64", "sourceColumn": "IncaricoID" },
+          { "name": "TeamPrestatoreID", "dataType": "int64", "sourceColumn": "TeamPrestatoreID" },
+          { "name": "TeamTitolareID", "dataType": "int64", "sourceColumn": "TeamTitolareID" },
+          { "name": "OreLavorate", "dataType": "double", "sourceColumn": "OreLavorate" },
+          { "name": "CostoOrario", "dataType": "double", "sourceColumn": "CostoOrario" },
+          { "name": "TariffaOraria", "dataType": "double", "sourceColumn": "TariffaOraria" },
+          { "name": "CostoEffettivo", "dataType": "double", "sourceColumn": "CostoEffettivo" },
+          { "name": "RicavoTeoricoRivendita", "dataType": "double", "sourceColumn": "RicavoTeoricoRivendita" },
+          { "name": "MargineTeoricoRivendita", "dataType": "double", "sourceColumn": "MargineTeoricoRivendita" },
+          { "name": "GiornateEquivalenti", "dataType": "double", "sourceColumn": "GiornateEquivalenti" }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Timesheet",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Timesheet.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_Redditivita_Incarico",
+        "columns": [
+          { "name": "IncaricoID", "dataType": "int64", "sourceColumn": "IncaricoID" },
+          { "name": "DataAperturaKey", "dataType": "int64", "sourceColumn": "DataAperturaKey" },
+          { "name": "DataChiusuraKey", "dataType": "int64", "sourceColumn": "DataChiusuraKey" },
+          { "name": "ClienteID", "dataType": "int64", "sourceColumn": "ClienteID" },
+          { "name": "TipoIncaricoID", "dataType": "int64", "sourceColumn": "TipoIncaricoID" },
+          { "name": "TeamTitolareID", "dataType": "int64", "sourceColumn": "TeamTitolareID" },
+          { "name": "StatoIncarico", "dataType": "string", "sourceColumn": "StatoIncarico" },
+          { "name": "RicavoReale", "dataType": "double", "sourceColumn": "RicavoReale" },
+          { "name": "RicavoTeorico", "dataType": "double", "sourceColumn": "RicavoTeorico" },
+          { "name": "CostoPersonale", "dataType": "double", "sourceColumn": "CostoPersonale" },
+          { "name": "CostiDiretti", "dataType": "double", "sourceColumn": "CostiDiretti" },
+          { "name": "CostoTotale", "dataType": "double", "sourceColumn": "CostoTotale" },
+          { "name": "MargineReale", "dataType": "double", "sourceColumn": "MargineReale" },
+          { "name": "MargineDesiderato", "dataType": "double", "sourceColumn": "MargineDesiderato" },
+          { "name": "MargineRealePerc", "dataType": "double", "sourceColumn": "MargineRealePerc" },
+          { "name": "MargineDesideratoPerc", "dataType": "double", "sourceColumn": "MargineDesideratoPerc" },
+          { "name": "ScontoApplicatoPerc", "dataType": "double", "sourceColumn": "ScontoApplicatoPerc" },
+          { "name": "TotaleOreLavorate", "dataType": "double", "sourceColumn": "TotaleOreLavorate" },
+          { "name": "TariffaOrariaEffettiva", "dataType": "double", "sourceColumn": "TariffaOrariaEffettiva" },
+          { "name": "AvanzamentoPerc", "dataType": "double", "sourceColumn": "AvanzamentoPerc" }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_Redditivita_Incarico",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_Redditivita_Incarico.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_CostiDiretti",
+        "columns": [
+          { "name": "CostoDirettoID", "dataType": "int64", "sourceColumn": "CostoDirettoID" },
+          { "name": "IncaricoID", "dataType": "int64", "sourceColumn": "IncaricoID" },
+          { "name": "TipoCostoID", "dataType": "int64", "sourceColumn": "TipoCostoID" },
+          { "name": "DataKey", "dataType": "int64", "sourceColumn": "DataKey" },
+          { "name": "Importo", "dataType": "double", "sourceColumn": "Importo" },
+          { "name": "Descrizione", "dataType": "string", "sourceColumn": "Descrizione" }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_CostiDiretti",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_CostiDiretti.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Fact_AvanzamentoCapitolato",
+        "columns": [
+          { "name": "IncaricoID", "dataType": "int64", "sourceColumn": "IncaricoID" },
+          { "name": "VoceID", "dataType": "int64", "sourceColumn": "VoceID" },
+          { "name": "DataEsecuzioneKey", "dataType": "int64", "sourceColumn": "DataEsecuzioneKey" },
+          { "name": "TeamTitolareID", "dataType": "int64", "sourceColumn": "TeamTitolareID" },
+          { "name": "ClienteID", "dataType": "int64", "sourceColumn": "ClienteID" },
+          { "name": "TipoIncaricoID", "dataType": "int64", "sourceColumn": "TipoIncaricoID" },
+          { "name": "Peso", "dataType": "int64", "sourceColumn": "Peso" },
+          { "name": "Eseguito", "dataType": "int64", "sourceColumn": "Eseguito" },
+          { "name": "PesoCompletato", "dataType": "int64", "sourceColumn": "PesoCompletato" },
+          { "name": "PesoResiduo", "dataType": "int64", "sourceColumn": "PesoResiduo" }
+        ],
+        "partitions": [
+          {
+            "name": "Fact_AvanzamentoCapitolato",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Json.Document(Web.Contents(\"https://davidit2022.github.io/StudioBianchiDemo/data/starschema/Fact_AvanzamentoCapitolato.json\")),",
+                "    ToTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),",
+                "    Expanded = Table.ExpandRecordColumn(ToTable, \"Column1\", Record.FieldNames(ToTable{0}[Column1]))",
+                "in",
+                "    Expanded"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "Fact_Timesheet_Dim_Data",
+        "fromTable": "Fact_Timesheet",
+        "fromColumn": "DataKey",
+        "toTable": "Dim_Data",
+        "toColumn": "DataKey"
+      },
+      {
+        "name": "Fact_Timesheet_Dim_Persona",
+        "fromTable": "Fact_Timesheet",
+        "fromColumn": "PersonaSK",
+        "toTable": "Dim_Persona",
+        "toColumn": "PersonaSK"
+      },
+      {
+        "name": "Fact_Timesheet_Dim_Incarico",
+        "fromTable": "Fact_Timesheet",
+        "fromColumn": "IncaricoID",
+        "toTable": "Dim_Incarico",
+        "toColumn": "IncaricoID"
+      },
+      {
+        "name": "Fact_Timesheet_Dim_Team_Prestatore",
+        "fromTable": "Fact_Timesheet",
+        "fromColumn": "TeamPrestatoreID",
+        "toTable": "Dim_Team",
+        "toColumn": "TeamID"
+      },
+      {
+        "name": "Fact_Redditivita_Dim_Incarico",
+        "fromTable": "Fact_Redditivita_Incarico",
+        "fromColumn": "IncaricoID",
+        "toTable": "Dim_Incarico",
+        "toColumn": "IncaricoID"
+      },
+      {
+        "name": "Fact_Redditivita_Dim_Cliente",
+        "fromTable": "Fact_Redditivita_Incarico",
+        "fromColumn": "ClienteID",
+        "toTable": "Dim_Cliente",
+        "toColumn": "ClienteID"
+      },
+      {
+        "name": "Fact_CostiDiretti_Dim_Incarico",
+        "fromTable": "Fact_CostiDiretti",
+        "fromColumn": "IncaricoID",
+        "toTable": "Dim_Incarico",
+        "toColumn": "IncaricoID"
+      },
+      {
+        "name": "Fact_CostiDiretti_Dim_TipoCosto",
+        "fromTable": "Fact_CostiDiretti",
+        "fromColumn": "TipoCostoID",
+        "toTable": "Dim_TipoCosto",
+        "toColumn": "TipoCostoID"
+      },
+      {
+        "name": "Fact_CostiDiretti_Dim_Data",
+        "fromTable": "Fact_CostiDiretti",
+        "fromColumn": "DataKey",
+        "toTable": "Dim_Data",
+        "toColumn": "DataKey"
+      },
+      {
+        "name": "Fact_Avanzamento_Dim_Incarico",
+        "fromTable": "Fact_AvanzamentoCapitolato",
+        "fromColumn": "IncaricoID",
+        "toTable": "Dim_Incarico",
+        "toColumn": "IncaricoID"
+      },
+      {
+        "name": "Fact_Avanzamento_Dim_VoceCapitolato",
+        "fromTable": "Fact_AvanzamentoCapitolato",
+        "fromColumn": "VoceID",
+        "toTable": "Dim_VoceCapitolato",
+        "toColumn": "VoceID"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "PBI_QueryOrder",
+        "value": "[\"Dim_Data\",\"Dim_Persona\",\"Dim_Team\",\"Dim_Cliente\",\"Dim_Incarico\",\"Dim_TipoCosto\",\"Dim_VoceCapitolato\",\"Fact_Timesheet\",\"Fact_Redditivita_Incarico\",\"Fact_CostiDiretti\",\"Fact_AvanzamentoCapitolato\"]"
+      }
+    ]
+  }
+}

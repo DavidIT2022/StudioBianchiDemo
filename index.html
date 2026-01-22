@@ -86,6 +86,149 @@
 
         .nav-links a:hover { color: var(--primary); }
 
+        .author-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .author-links a:hover { color: var(--primary); }
+
+        .author-links .linkedin:hover { color: #0077b5; }
+
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 1rem 1.5rem;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+        }
+
+        .cta-banner p {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .cta-banner a {
+            background: white;
+            color: var(--primary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: all 0.3s;
+        }
+
+        .cta-banner a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .cta-banner .close-cta {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .cta-banner .close-cta:hover { opacity: 1; }
+
+        .cta-banner.hidden { display: none; }
+
+        /* Hero CTA */
+        .hero-cta {
+            margin-top: 2.5rem;
+            padding: 1.5rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: #e2e8f0;
+        }
+
+        .hero-cta .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .hero-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .hero-cta a.btn-primary {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+
+        .hero-cta a.btn-primary:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+        }
+
+        .hero-cta a.btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-cta a.btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .hero-author {
+            margin-top: 1rem;
+            font-size: 0.85rem;
+            color: #94a3b8;
+        }
+
+        .hero-author strong {
+            color: #e2e8f0;
+        }
+
         /* Hero Section */
         .hero {
             min-height: 100vh;
@@ -738,6 +881,141 @@
             font-size: 0.85rem;
         }
 
+        /* Author Modal */
+        .modal-autore {
+            max-width: 900px;
+        }
+
+        .author-profile {
+            display: flex;
+            gap: 2rem;
+            padding: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .author-left {
+            flex: 0 0 220px;
+            text-align: center;
+        }
+
+        .author-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #059669;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .author-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 0.25rem;
+        }
+
+        .author-title {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 1.25rem;
+        }
+
+        .author-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .author-contact a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .author-contact .btn-email {
+            background: var(--surface-alt);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+
+        .author-contact .btn-email:hover {
+            background: var(--bg-subtle);
+            border-color: var(--primary);
+        }
+
+        .author-contact .btn-linkedin {
+            background: #0077b5;
+            color: white;
+        }
+
+        .author-contact .btn-linkedin:hover {
+            background: #005f8f;
+        }
+
+        .author-right {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .author-bio {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-bio strong {
+            color: #059669;
+        }
+
+        .author-credentials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .credential-card {
+            background: var(--surface-alt);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .credential-card i {
+            font-size: 1.5rem;
+            color: #059669;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .credential-card p {
+            font-size: 0.8rem;
+            color: var(--text);
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        @media (max-width: 640px) {
+            .author-profile {
+                flex-direction: column;
+                align-items: center;
+            }
+            .author-left {
+                flex: none;
+            }
+            .author-right {
+                min-width: auto;
+            }
+        }
+
         /* Quote */
         .quote {
             background: linear-gradient(135deg, #eff6ff 0%, #f0fdfa 100%);
@@ -867,6 +1145,10 @@
             <a href="#viste">Viste SQL</a>
             <a href="#api">API JSON</a>
         </nav>
+        <div class="author-links">
+            <a href="mailto:db@bianconi-mc.com" title="Email"><i class="fas fa-envelope"></i> db@bianconi-mc.com</a>
+            <a href="https://www.linkedin.com/in/davidbianconi/" target="_blank" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i> David Bianconi</a>
+        </div>
     </header>
 
     <!-- Hero -->
@@ -893,6 +1175,11 @@
                     <div class="stat-value">16K+</div>
                     <div class="stat-label">Transazioni</div>
                 </div>
+            </div>
+
+            <div class="hero-cta" onclick="openModal('modal-autore')" style="cursor: pointer;">
+                <p><i class="fas fa-user-tie"></i> Materiale creato da <strong>David Bianconi</strong></p>
+                <p style="font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">Formazione e consulenza su Power BI, DAX e Data Modeling <i class="fas fa-arrow-right" style="margin-left: 0.5rem;"></i></p>
             </div>
         </div>
         <div class="scroll-indicator">
@@ -1488,6 +1775,28 @@
                 <p>Crea una <strong>funzione parametrica</strong> in Power Query che accetta il nome del file come parametro. Così potrai caricare tutte le tabelle con la stessa logica, cambiando solo il nome.</p>
             </div>
 
+            <h3 style="margin-top: 2rem; margin-bottom: 1rem;"><i class="fas fa-download" style="color: var(--success);"></i> Download Progetti Power BI (PBIP)</h3>
+
+            <div class="info-box success reveal">
+                <div class="info-box-title"><i class="fas fa-folder-open"></i> Progetti Power BI pronti all'uso</div>
+                <p>Scarica i progetti PBIP con tutte le tabelle già configurate e le relazioni impostate. Basta aprirli con Power BI Desktop!</p>
+            </div>
+
+            <div class="cards-grid reveal" style="margin-bottom: 2rem;">
+                <div class="card" style="cursor: default;">
+                    <div class="card-icon green"><i class="fas fa-star"></i></div>
+                    <h3>Star Schema</h3>
+                    <p>Modello Kimball con 7 dimensioni, 4 fact tables e tutte le relazioni.</p>
+                    <a href="pbip/StudioBianchi_StarSchema.pbip" download style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--success); color: white; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem;"><i class="fas fa-download"></i> Scarica PBIP</a>
+                </div>
+                <div class="card" style="cursor: default;">
+                    <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Viste Didattiche</h3>
+                    <p>Tutte le 20 viste didattiche per studiare le trasformazioni M di Power Query.</p>
+                    <a href="pbip/StudioBianchi_Didattica.pbip" download style="display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 1rem; padding: 0.5rem 1rem; background: var(--primary); color: white; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.85rem;"><i class="fas fa-download"></i> Scarica PBIP</a>
+                </div>
+            </div>
+
             <h3 style="margin-top: 2rem; margin-bottom: 1rem;"><i class="fas fa-python" style="color: var(--warning);"></i> Come connettersi da Python</h3>
 
             <div class="code-block reveal">
@@ -1515,7 +1824,12 @@ margini = fact_timesheet.groupby(<span class="string">'PersonaID'</span>).agg({
         <div class="container">
             <p style="font-size: 1.1rem; margin-bottom: 1rem;"><i class="fas fa-database"></i> <strong>Studio Bianchi Dataset</strong></p>
             <p>Materiale didattico per corsi di Business Intelligence</p>
-            <p style="margin-top: 1rem;">
+            <p style="margin-top: 1.5rem; font-size: 1rem;">
+                <strong>David Bianconi</strong><br>
+                <a href="mailto:db@bianconi-mc.com"><i class="fas fa-envelope"></i> db@bianconi-mc.com</a> &nbsp;|&nbsp;
+                <a href="https://www.linkedin.com/in/davidbianconi/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            </p>
+            <p style="margin-top: 1.5rem;">
                 Repository: <a href="https://github.com/DavidIT2022/StudioBianchiDemo" target="_blank"><i class="fab fa-github"></i> github.com/DavidIT2022/StudioBianchiDemo</a>
             </p>
             <p style="margin-top: 1rem; font-size: 0.8rem; color: #64748b;">
@@ -1806,6 +2120,50 @@ margini = fact_timesheet.groupby(<span class="string">'PersonaID'</span>).agg({
 
                 <h4>Perché Due Fact Table?</h4>
                 <p>Non possiamo mettere <code>RicavoReale</code> nella Fact_Timesheet perché violerebbe la granularità. L'importo pattuito è a livello incarico, non a livello singola ora. Kimball insegna: <strong>mai violare la granularità</strong>!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Autore -->
+    <div class="modal-overlay" id="modal-autore">
+        <div class="modal modal-autore">
+            <div class="modal-header" style="border-bottom: none; padding-bottom: 0;">
+                <div></div>
+                <button class="modal-close" onclick="closeModal('modal-autore')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="author-profile">
+                <div class="author-left">
+                    <img src="img/david-bianconi.png" alt="David Bianconi" class="author-photo">
+                    <h2 class="author-name">David Bianconi</h2>
+                    <p class="author-title">Dottore Commercialista<br>e Revisore Legale</p>
+                    <div class="author-contact">
+                        <a href="mailto:db@bianconi-mc.com" class="btn-email"><i class="fas fa-envelope"></i> db@bianconi-mc.com</a>
+                        <a href="https://www.linkedin.com/in/davidbianconi/" target="_blank" class="btn-linkedin"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    </div>
+                </div>
+                <div class="author-right">
+                    <p class="author-bio">
+                        Commercialista dal 2008, mi occupo di <strong>Controllo di Gestione</strong> e <strong>Finanza Aziendale</strong> con un approccio basato sui dati. Ho unito la formazione economica con competenze tecniche in <strong>Database</strong>, <strong>Data Modeling</strong> e strumenti di <strong>Business Intelligence</strong> come Power BI, sviluppando soluzioni concrete per PMI di diversi settori.
+                    </p>
+                    <div class="author-credentials">
+                        <div class="credential-card">
+                            <i class="fas fa-certificate"></i>
+                            <p>Microsoft MCSA BI Reporting (2021)</p>
+                        </div>
+                        <div class="credential-card">
+                            <i class="fas fa-users"></i>
+                            <p>Presidente Commissione Controllo di Gestione ODCEC Perugia</p>
+                        </div>
+                        <div class="credential-card">
+                            <i class="fas fa-book"></i>
+                            <p>Coautore "Business Intelligence per le PMI" (Maggioli, 2022)</p>
+                        </div>
+                        <div class="credential-card">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <p>Docente presso ODCEC, SAF e 24 Ore Business School</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
